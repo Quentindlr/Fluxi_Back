@@ -23,6 +23,7 @@ namespace back_Fluxi.Models
         [ForeignKey("CategorieId")]
         public Categorie Categorie { get; set; }
 
+        public IList<VideoActeur> VideoActeurs { get; set; }
 
     }
 }

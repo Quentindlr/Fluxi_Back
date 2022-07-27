@@ -15,5 +15,7 @@ namespace back_Fluxi.Models
         public int Id { get => id; set => id = value; }
         [Column("name")]
         public string Name { get => name; set => name = value; }
+
+        public IList<VideoActeur> VideoActeurs { get; set; }
     }
 }
