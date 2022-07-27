@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using back_Fluxi.Services;
 
@@ -10,9 +11,10 @@ using back_Fluxi.Services;
 namespace back_Fluxi.Migrations
 {
     [DbContext(typeof(DataContextService))]
-    partial class DataContextServiceModelSnapshot : ModelSnapshot
+    [Migration("20220727140825_fluxi2")]
+    partial class fluxi2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
