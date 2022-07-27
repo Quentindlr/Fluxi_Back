@@ -20,7 +20,7 @@ namespace back_Fluxi.Models
         [Column("video_id")]
         public int VideoId { get => videoId; set => videoId = value; }
 
-        [ForeignKey("VideoId")]
+
         public Video Video { get; set; }
     }
 }

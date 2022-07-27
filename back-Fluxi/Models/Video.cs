@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace back_Fluxi.Models
 {
@@ -30,6 +31,7 @@ namespace back_Fluxi.Models
 
         [Column("film_id")]
         public int FilmId { get => filmId; set => filmId = value; }
+
         [ForeignKey("FilmId")]
         public Film Film { get; set; }
 
