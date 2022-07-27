@@ -7,7 +7,7 @@ namespace back_Fluxi.Models
     {
         private int id;
         private string url;
-
+        private int videoId;
         public Film()
         {
         }
@@ -16,5 +16,11 @@ namespace back_Fluxi.Models
         public int Id { get => id; set => id = value; }
         [Column("url")]
         public string Url { get => url; set => url = value; }
+
+        [Column("video_id")]
+        public int VideoId { get => videoId; set => videoId = value; }
+
+        [ForeignKey("VideoId")]
+        public Video Video { get; set; }
     }
 }

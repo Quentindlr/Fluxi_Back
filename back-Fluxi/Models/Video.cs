@@ -9,7 +9,12 @@ namespace back_Fluxi.Models
         private int id;
         private string name;
         private int categorieId;
-        private string acteurId;
+        private int filmId;
+
+        public Video()
+        {
+            Series = new List<Serie>();
+        }
 
         [Column("id")]
         public int Id { get => id; set => id = value; }
@@ -23,7 +28,15 @@ namespace back_Fluxi.Models
         [ForeignKey("CategorieId")]
         public Categorie Categorie { get; set; }
 
+        [Column("film_id")]
+        public int FilmId { get => filmId; set => filmId = value; }
+        [ForeignKey("FilmId")]
+        public Film Film { get; set; }
+
+        public List<Serie> Series { get; set; }
         public IList<VideoActeur> VideoActeurs { get; set; }
+
+
 
     }
 }

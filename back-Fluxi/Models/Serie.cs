@@ -9,6 +9,7 @@ namespace back_Fluxi.Models
         private string url;
         private int saison;
         private int episode;
+        private int videoId;
 
         public Serie()
         {
@@ -21,5 +22,11 @@ namespace back_Fluxi.Models
         public int Saison { get => saison; set => saison = value; }
         [Column("episode")]
         public int Episode { get => episode; set => episode = value; }
+
+        [Column("video_id")]
+        public int VideoId { get => videoId; set => videoId = value; }
+
+        [ForeignKey("VideoId")]
+        public Video Video { get; set; }
     }
 }
