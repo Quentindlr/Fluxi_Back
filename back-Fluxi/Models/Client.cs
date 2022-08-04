@@ -28,7 +28,7 @@ namespace back_Fluxi.Models
         public string Mdp { get => mdp; set => mdp = value; }
        
 
-        public List<Utilisateur> utilisateurs { get; set; }   
+        public List<Utilisateur> Utilisateurs { get; set; }   
     }
 
 }
