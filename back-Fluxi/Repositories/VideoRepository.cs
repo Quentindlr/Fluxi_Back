@@ -31,7 +31,7 @@ namespace back_Fluxi.Repositories
 
         public override List<Video> FindAll(Func<Video, bool> predicate)
         {
-            return _dataContextService.Videos.Include(f => f.Film).Include(s => s.Series).ToList().Where(a => predicate(a)).ToList();
+            return _dataContextService.Videos.Include(f => f.Film).Include(s => s.Series).Include(c => c.Categorie).Include(a => a.VideoActeurs).ToList().Where(a => predicate(a)).ToList();
         }
     }
 }
