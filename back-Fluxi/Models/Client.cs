@@ -14,12 +14,11 @@ namespace back_Fluxi.Models
 
         private string role;
 
-        
+
 
         public Client()
         {
-
-
+            
         }
 
         [Column("id")]
@@ -32,8 +31,6 @@ namespace back_Fluxi.Models
         [Column("role")]
         public string Role { get => role; set => role = value; }
 
-
-        public List<Utilisateur> Utilisateurs { get; set; }   
     }
 
 }

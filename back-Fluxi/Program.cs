@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddScoped<BaseRepository<Categorie>, CategorieRepository>();
 builder.Services.AddScoped<BaseRepository<Client>, ClientRepository>();
-builder.Services.AddScoped<BaseRepository<Utilisateur>, UtilisateurRepository>();
+//builder.Services.AddScoped<BaseRepository<Utilisateur>, UtilisateurRepository>();
 //builder.Services.AddScoped<BaseRepository<Video>, VideoRepository>();
 builder.Services.AddDbContext<DataContextService>();
 
@@ -21,6 +21,14 @@ builder.Services.AddTransient<IUpload, UploadService>();
 builder.Services.AddScoped<ILogin, JwtLoginService>();
 
 builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("react", builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
 
 builder.Services.AddAuthentication(a =>
 {
@@ -47,6 +55,11 @@ builder.Services.AddAuthorization(builder =>
     {
         options.RequireRole("admin");
     });
+
+    builder.AddPolicy("user", options =>
+    {
+        options.RequireRole("user");
+    });
 });
 
 var app = builder.Build();
@@ -57,7 +70,7 @@ var app = builder.Build();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseCors();
 app.MapControllers();
 
 app.Run();

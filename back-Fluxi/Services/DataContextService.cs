@@ -6,7 +6,7 @@ namespace back_Fluxi.Services
 
     public class DataContextService : DbContext
     {
-        public DbSet<Utilisateur> Utilisateurs { get; set; }
+        //public DbSet<Utilisateur> Utilisateurs { get; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<Categorie> Categories { get; set; }
         public DbSet<Client> Clients { get; set; }

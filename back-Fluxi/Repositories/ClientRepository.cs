@@ -7,10 +7,10 @@ namespace back_Fluxi.Repositories
     public class ClientRepository : BaseRepository<Client>
     {
 
-        private BaseRepository<Utilisateur> _utilisateurRepository;
-        public ClientRepository(DataContextService dataContextService, BaseRepository<Utilisateur> utilisateurRepository) : base(dataContextService)
+
+        public ClientRepository(DataContextService dataContextService) : base(dataContextService)
         {
-            _utilisateurRepository = utilisateurRepository;
+            
         }
 
         public override bool Add(Client entity)
@@ -27,7 +27,7 @@ namespace back_Fluxi.Repositories
 
         public override Client Find(Func<Client, bool> predicate)
         {
-            return _dataContextService.Clients.Include(a => a.Utilisateurs).ToList().FirstOrDefault(u => predicate(u));
+            return _dataContextService.Clients.ToList().FirstOrDefault(u => predicate(u));
         }
 
         public override List<Client> FindAll(Func<Client, bool> predicate)

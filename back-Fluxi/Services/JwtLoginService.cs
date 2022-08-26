@@ -47,8 +47,8 @@ namespace back_Fluxi.Services
                 Audience = "m2i",
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                        //new Claim("role", client.Role),
-                        new Claim("username", client.Email)
+                        new Claim("role", client.Role),
+                        //new Claim("username", client.Email)
                 })
             };
 
