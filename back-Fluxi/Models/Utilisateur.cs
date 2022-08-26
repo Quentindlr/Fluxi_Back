@@ -18,8 +18,7 @@ namespace back_Fluxi.Models
         {
         }
 
-        [Column("role")]
-        public string Role { get => role; set => role = value; }
+        
         [Column("id")]
         public int Id { get => id; set => id = value; }
         [Column("name")]

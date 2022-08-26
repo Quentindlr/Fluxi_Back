@@ -14,10 +14,10 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<BaseRepository<Categorie>, CategorieRepository>();
 builder.Services.AddScoped<BaseRepository<Client>, ClientRepository>();
 builder.Services.AddScoped<BaseRepository<Utilisateur>, UtilisateurRepository>();
-builder.Services.AddScoped<BaseRepository<Video>, VideoRepository>();
+//builder.Services.AddScoped<BaseRepository<Video>, VideoRepository>();
 builder.Services.AddDbContext<DataContextService>();
 
-builder.Services.AddScoped<IUpload, UploadService>();
+builder.Services.AddTransient<IUpload, UploadService>();
 builder.Services.AddScoped<ILogin, JwtLoginService>();
 
 builder.Services.AddHttpContextAccessor();
@@ -41,7 +41,13 @@ builder.Services.AddAuthentication(a =>
     };
 });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(builder =>
+{
+    builder.AddPolicy("admin", options =>
+    {
+        options.RequireRole("admin");
+    });
+});
 
 var app = builder.Build();
 

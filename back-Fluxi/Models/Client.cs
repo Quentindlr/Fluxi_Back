@@ -12,6 +12,8 @@ namespace back_Fluxi.Models
 
         private string mdp;
 
+        private string role;
+
         
 
         public Client()
@@ -26,7 +28,10 @@ namespace back_Fluxi.Models
         public string Email { get => email; set => email = value; }
         [Column("password")]
         public string Mdp { get => mdp; set => mdp = value; }
-       
+
+        [Column("role")]
+        public string Role { get => role; set => role = value; }
+
 
         public List<Utilisateur> Utilisateurs { get; set; }   
     }
