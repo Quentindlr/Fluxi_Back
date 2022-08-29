@@ -28,7 +28,7 @@ namespace back_Fluxi.Services
 
         public string Login(UserDTO userDTO)
         {
-            Client u = _clientRepository.Find(u => u.Email == userDTO.Username && u.Mdp == userDTO.Password);
+            Client u = _clientRepository.Find(u => u.Email == userDTO.Email && u.Password == userDTO.Password);
             if (u != null)
             {
                 return CreateToken(u);

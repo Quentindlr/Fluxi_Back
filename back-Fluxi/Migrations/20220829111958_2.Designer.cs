@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using back_Fluxi.Services;
 
@@ -10,9 +11,10 @@ using back_Fluxi.Services;
 namespace back_Fluxi.Migrations
 {
     [DbContext(typeof(DataContextService))]
-    partial class DataContextServiceModelSnapshot : ModelSnapshot
+    [Migration("20220829111958_2")]
+    partial class _2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,11 +84,6 @@ namespace back_Fluxi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("role");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("username");
 
                     b.HasKey("Id");
 

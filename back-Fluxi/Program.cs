@@ -70,7 +70,7 @@ var app = builder.Build();
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseCors();
+app.UseCors("react");
 app.MapControllers();
 
 app.Run();

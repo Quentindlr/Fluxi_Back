@@ -25,7 +25,8 @@ namespace back_Fluxi.Contollers
             _categorieRepository.Add(c);
             return Ok(c);
         }
-
+        
+        
         [HttpGet]
         public IActionResult Get()
         {

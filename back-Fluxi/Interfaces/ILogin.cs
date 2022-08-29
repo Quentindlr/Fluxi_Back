@@ -7,5 +7,5 @@
         public bool IsLogged();
     }
 
-    public record UserDTO(string Username, string Password);
+    public record UserDTO(string Email, string Password);
 }

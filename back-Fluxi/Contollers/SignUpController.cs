@@ -23,7 +23,7 @@ namespace back_Fluxi.Contollers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Client c)
+        public IActionResult Post([FromQuery] Client c)
         {
             _clientRepository.Add(c);
 

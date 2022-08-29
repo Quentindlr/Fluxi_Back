@@ -1,4 +1,4 @@
-﻿using back_Fluxi.Interfaces;
+﻿ using back_Fluxi.Interfaces;
 
 namespace back_Fluxi.Services
 {
