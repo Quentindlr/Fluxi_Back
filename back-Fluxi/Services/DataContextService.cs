@@ -17,9 +17,9 @@ namespace back_Fluxi.Services
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\fluxi;Integrated Security=True");
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<VideoActeur>().HasKey(sc => new { sc.VideoID, sc.ActeurId });
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<VideoActeur>().HasKey(sc => new { sc.VideoID, sc.ActeurId });
+        //}
     }
 }

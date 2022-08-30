@@ -14,7 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<BaseRepository<Categorie>, CategorieRepository>();
 builder.Services.AddScoped<BaseRepository<Client>, ClientRepository>();
 //builder.Services.AddScoped<BaseRepository<Utilisateur>, UtilisateurRepository>();
-//builder.Services.AddScoped<BaseRepository<Video>, VideoRepository>();
+builder.Services.AddScoped<BaseRepository<Video>, VideoRepository>();
 builder.Services.AddDbContext<DataContextService>();
 
 builder.Services.AddTransient<IUpload, UploadService>();
@@ -68,9 +68,9 @@ var app = builder.Build();
 
 
 
+app.UseCors("react");
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseCors("react");
 app.MapControllers();
 
 app.Run();

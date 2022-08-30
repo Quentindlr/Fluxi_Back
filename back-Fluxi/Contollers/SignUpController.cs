@@ -1,12 +1,15 @@
 ﻿using back_Fluxi.Models;
 using back_Fluxi.Repositories;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace back_Fluxi.Contollers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
+    
     public class SignUpController : ControllerBase
     {
         private BaseRepository<Client> _clientRepository;
@@ -16,14 +19,14 @@ namespace back_Fluxi.Contollers
             _clientRepository = clientRepository;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
         {
-            return Ok(_clientRepository.Find(a => true));
+            return Ok(_clientRepository.Find(a => a.Id == id));
         }
 
         [HttpPost]
-        public IActionResult Post([FromQuery] Client c)
+        public IActionResult Post(Client c)
         {
             _clientRepository.Add(c);
 

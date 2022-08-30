@@ -6,17 +6,18 @@ namespace back_Fluxi.Repositories
 {
     public class VideoRepository : BaseRepository<Video>
     {
-        private BaseRepository<Film> _filmRepository;
-        private BaseRepository<Serie> _serieRepository;
-        public VideoRepository(DataContextService dataContextService, BaseRepository<Film> filmRepository, BaseRepository<Serie> serieRepository) : base(dataContextService)
+        //private BaseRepository<Film> _filmRepository;
+        //private BaseRepository<Serie> _serieRepository;
+        public VideoRepository(DataContextService dataContextService) : base(dataContextService)
         {
-            _filmRepository = filmRepository;
-            _serieRepository = serieRepository;
+            //_filmRepository = filmRepository;
+            //_serieRepository = serieRepository;
         }
 
         public override bool Add(Video entity)
         {
-            throw new NotImplementedException();
+            _dataContextService.Videos.Add(entity);
+            return Update() && entity.Id > 0;
         }
 
         public override bool Delete(Video entity)
@@ -26,12 +27,12 @@ namespace back_Fluxi.Repositories
 
         public override Video Find(Func<Video, bool> predicate)
         {
-            throw new NotImplementedException();
+            return _dataContextService.Videos.ToList().FirstOrDefault(u => predicate(u));
         }
 
         public override List<Video> FindAll(Func<Video, bool> predicate)
         {
-            return _dataContextService.Videos.Include(f => f.Film).Include(s => s.Series).Include(c => c.Categorie).Include(a => a.VideoActeurs).ToList().Where(a => predicate(a)).ToList();
+            return _dataContextService.Videos.Include(c => c.Categorie).Include(i=> i.Images).ToList().Where(a => predicate(a)).ToList();
         }
     }
 }
