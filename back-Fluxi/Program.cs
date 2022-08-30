@@ -67,7 +67,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 
 
-
+app.UseStaticFiles();
 app.UseCors("react");
 app.UseAuthentication();
 app.UseAuthorization();
