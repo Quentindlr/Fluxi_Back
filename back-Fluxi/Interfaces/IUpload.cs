@@ -2,6 +2,8 @@
 {
     public interface IUpload
     {
-        public string Upload(IFormFile file);
+        public string UploadImg(IFormFile file);
+
+        public string UploadVideo(IFormFile file);
     }
 }

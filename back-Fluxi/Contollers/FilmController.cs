@@ -40,15 +40,16 @@ namespace back_Fluxi.Contollers
         }
 
         [HttpPut("{id}/image")]
-        public IActionResult PutImage(int id, [FromForm] IFormFile image, [FromForm] IFormFile imageBack)
+        public IActionResult PutImage(int id,[FromForm]IFormFile urlVideo, [FromForm] IFormFile image, [FromForm] IFormFile imageBack)
         {
             Video video = _videoRepository.Find(a => a.Id == id);
             if (video != null)
             {
                 video.Images = new Image()
                 {
-                    UrlImage = _upload.Upload(image),
-                    UrlImageBack = _upload.Upload(imageBack),
+                    UrlVideo = _upload.UploadVideo(urlVideo),
+                    UrlImage = _upload.UploadImg(image),
+                    UrlImageBack = _upload.UploadImg(imageBack),
                 };
                 _videoRepository.Update();
                 return Ok();

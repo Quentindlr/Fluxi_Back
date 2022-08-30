@@ -93,6 +93,11 @@ namespace back_Fluxi.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("url_image_back");
 
+                    b.Property<string>("UrlVideo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("url_video");
+
                     b.Property<int>("filmId")
                         .HasColumnType("int");
 

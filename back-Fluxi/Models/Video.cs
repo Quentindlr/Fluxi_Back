@@ -22,7 +22,7 @@ namespace back_Fluxi.Models
 
         [Column("name")]
         public string Name { get => name; set => name = value; }
-
+        
         [Column("categorie_id")]
         public int CategorieId { get => categorieId; set => categorieId = value; }
 

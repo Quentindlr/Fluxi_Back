@@ -15,8 +15,8 @@ namespace back_Fluxi.Models
         }
         [Column("id")]
         public int Id { get => id; set => id = value; }
-        //[Column("url_video")]
-        //public string UrlVideo { get => urlVideo; set => urlVideo = value; }
+        [Column("url_video")]
+        public string UrlVideo { get => urlVideo; set => urlVideo = value; }
         [Column("url_image")]
         public string UrlImage { get => urlImage; set => urlImage = value; }
         [Column("url_image_back")]

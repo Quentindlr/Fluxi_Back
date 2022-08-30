@@ -10,13 +10,22 @@ namespace back_Fluxi.Services
         {
             _env = env;
         }
-        public string Upload(IFormFile file)
+        public string UploadImg(IFormFile file)
         {
             string path = Path.Combine(_env.WebRootPath, "images", file.FileName);
             Stream stream = new FileStream(path, FileMode.Create);
             file.CopyTo(stream);
             stream.Close();
             return "images/" + file.FileName;
+        }
+
+        public string UploadVideo(IFormFile file)
+        {
+            string path = Path.Combine(_env.WebRootPath, "videos", file.FileName);
+            Stream stream = new FileStream(path, FileMode.Create);
+            file.CopyTo(stream);
+            stream.Close();
+            return "videos/" + file.FileName;
         }
     }
 }
