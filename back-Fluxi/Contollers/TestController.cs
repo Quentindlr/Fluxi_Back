@@ -18,7 +18,7 @@ namespace back_Fluxi.Contollers
         }
 
         [HttpPost]
-        [Authorize]
+        
         [Authorize("admin")]
         public IActionResult Post([FromBody] Categorie c)
         {

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "back-Fluxi", "back-Fluxi\back-Fluxi.csproj", "{7C77CFFE-8737-47BE-B9DB-23D4259344FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluxiAdmin", "FluxiAdmin\FluxiAdmin.csproj", "{6D148AFB-5E53-4EF6-897E-4D06BC0CF623}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7C77CFFE-8737-47BE-B9DB-23D4259344FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C77CFFE-8737-47BE-B9DB-23D4259344FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C77CFFE-8737-47BE-B9DB-23D4259344FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D148AFB-5E53-4EF6-897E-4D06BC0CF623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D148AFB-5E53-4EF6-897E-4D06BC0CF623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D148AFB-5E53-4EF6-897E-4D06BC0CF623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D148AFB-5E53-4EF6-897E-4D06BC0CF623}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

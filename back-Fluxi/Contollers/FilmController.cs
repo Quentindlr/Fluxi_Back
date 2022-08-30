@@ -1,6 +1,7 @@
 ﻿using back_Fluxi.Interfaces;
 using back_Fluxi.Models;
 using back_Fluxi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,8 +26,8 @@ namespace back_Fluxi.Contollers
 
             return Ok(_videoRepository.FindAll(a => true));
         }
-
         [HttpPost]
+        [Authorize("admin")]
         public IActionResult Post([FromBody] VideoDTO videoDTO)
         {
             Video video = new Video()
@@ -40,6 +41,7 @@ namespace back_Fluxi.Contollers
         }
 
         [HttpPut("{id}/image")]
+        [Authorize("admin")]
         public IActionResult PutImage(int id,[FromForm]IFormFile urlVideo, [FromForm] IFormFile image, [FromForm] IFormFile imageBack)
         {
             Video video = _videoRepository.Find(a => a.Id == id);
