@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <GroupBox HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <Label Content="Username" HorizontalAlignment="Left"/>
+                <TextBox HorizontalAlignment="Left" Height="33" Text="TextBox" Width="181"/>
+                <Label Content="Password" HorizontalAlignment="Left"/>
+                <TextBox HorizontalAlignment="Left" Height="33" Text="TextBox" Width="181"/>
+                <Button Content="Valider" Click="Connection"></Button>
+            </StackPanel>
+        </GroupBox>
+        
 
     </Grid>
 </Window>

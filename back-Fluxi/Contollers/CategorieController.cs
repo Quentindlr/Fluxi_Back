@@ -8,18 +8,18 @@ namespace back_Fluxi.Contollers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestController : ControllerBase
+    public class CategorieController : ControllerBase
     {
         private BaseRepository<Categorie> _categorieRepository;
 
-        public TestController(BaseRepository<Categorie> categorieRepository)
+        public CategorieController(BaseRepository<Categorie> categorieRepository)
         {
             _categorieRepository = categorieRepository;
         }
 
         [HttpPost]
         
-        [Authorize("admin")]
+        //[Authorize("admin")]
         public IActionResult Post([FromBody] Categorie c)
         {
             _categorieRepository.Add(c);

@@ -27,7 +27,7 @@ namespace back_Fluxi.Contollers
             return Ok(_videoRepository.FindAll(a => true));
         }
         [HttpPost]
-        [Authorize("admin")]
+        //[Authorize("admin")]
         public IActionResult Post([FromBody] VideoDTO videoDTO)
         {
             Video video = new Video()
@@ -41,7 +41,7 @@ namespace back_Fluxi.Contollers
         }
 
         [HttpPut("{id}/image")]
-        [Authorize("admin")]
+        //[Authorize("admin")]
         public IActionResult PutImage(int id,[FromForm]IFormFile urlVideo, [FromForm] IFormFile image, [FromForm] IFormFile imageBack)
         {
             Video video = _videoRepository.Find(a => a.Id == id);

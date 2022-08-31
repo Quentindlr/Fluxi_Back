@@ -32,7 +32,7 @@ namespace back_Fluxi.Repositories
 
         public override List<Client> FindAll(Func<Client, bool> predicate)
         {
-            throw new NotImplementedException();
+            return _dataContextService.Clients.Where(predicate).ToList();
         }
     }
 }

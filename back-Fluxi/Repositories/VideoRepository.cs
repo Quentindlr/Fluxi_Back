@@ -22,7 +22,8 @@ namespace back_Fluxi.Repositories
 
         public override bool Delete(Video entity)
         {
-            throw new NotImplementedException();
+            _dataContextService.Videos.Remove(entity);
+            return Update();
         }
 
         public override Video Find(Func<Video, bool> predicate)

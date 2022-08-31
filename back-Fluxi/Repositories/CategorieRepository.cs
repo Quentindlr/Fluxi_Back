@@ -23,7 +23,7 @@ namespace back_Fluxi.Repositories
 
         public override Categorie Find(Func<Categorie, bool> predicate)
         {
-            throw new NotImplementedException();
+            return _dataContextService.Categories.ToList().FirstOrDefault(u => predicate(u));
         }
 
         public override List<Categorie> FindAll(Func<Categorie, bool> predicate)

@@ -1,7 +1,4 @@
-﻿using back_Fluxi.Models;
-using back_Fluxi.Repositories;
-using FluxiAdmin.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,28 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FluxiAdmin
+namespace FluxiAdmin.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour ClientPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ClientPage : Window
     {
-       
-        public MainWindow()
+        public ClientPage()
         {
             InitializeComponent();
-
-            
-        }
-
-        public void Connection(object sender, RoutedEventArgs e)
-        {
-            Home c = new Home();
-            c.Show();
         }
     }
 }

@@ -1,0 +1,50 @@
+﻿<Window x:Class="FluxiAdmin.Pages.FilmPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FluxiAdmin.Pages"
+        mc:Ignorable="d"
+        Title="FilmPage" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
+            <ListView x:Name="CategorieListView" SelectedItem="{Binding SelectVideo}" ItemsSource="{Binding Films}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="66" Header="Id"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="66" Header="Titre" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Categorie.Name}" Width="66" Header="Categorie" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Images.UrlImage}" Width="66" Header="Url Image" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Images.UrlImageBack}" Width="66" Header="Url ImageBack" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Images.UrlVideo}" Width="66" Header="Url Video" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+
+        <GroupBox Grid.Row="0" Grid.Column="1">
+            <StackPanel VerticalAlignment="Center">
+                <TextBox Text="{Binding Name}"></TextBox>
+                <TextBox Text="{Binding Id}"></TextBox>
+                <Button Command="{Binding OpenFileCommand}" Content="Image"></Button>
+                <Button Command="{Binding AddCommand}" Content="Valider"></Button>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Grid.Column="1">
+            <StackPanel VerticalAlignment="Center">
+                <Button Command="{Binding DeletteCommand}" Content="Supprimer"></Button>
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</Window>
