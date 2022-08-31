@@ -19,8 +19,11 @@
             <ListView x:Name="CategorieListView" SelectedItem="{Binding SelectClient}" ItemsSource="{Binding Clients}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="200" Header="Id"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="200" Header="Categorie" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="50" Header="Id"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Username}" Width="80" Header="Username" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Email}" Width="80" Header="Email" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Password}" Width="80" Header="Password" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Role}" Width="80" Header="Role" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -28,8 +31,14 @@
 
         <GroupBox Grid.Row="0" Grid.Column="1">
             <StackPanel VerticalAlignment="Center">
-                <Label HorizontalAlignment="Center" Content="Nom Categorie"></Label>
-                <TextBox Text="{Binding Name}" Margin="0,10,0,0" ></TextBox>
+                <Label HorizontalAlignment="Center" Content="Username"></Label>
+                <TextBox Text="{Binding Username}" Margin="0,0,0,0" ></TextBox>
+                <Label HorizontalAlignment="Center" Content="Email"></Label>
+                <TextBox Text="{Binding Email}" Margin="0,0,0,0" ></TextBox>
+                <Label HorizontalAlignment="Center" Content="Password"></Label>
+                <TextBox Text="{Binding Password}" Margin="0,0,0,0" ></TextBox>
+                <Label HorizontalAlignment="Center" Content="Role"></Label>
+                <TextBox Text="{Binding Role}" Margin="0,0,0,0" ></TextBox>
                 <Button Command="{Binding AddCommand}" Content="Valider" Margin="0,10,0,0"></Button>
             </StackPanel>
         </GroupBox>

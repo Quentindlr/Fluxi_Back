@@ -28,39 +28,41 @@ namespace back_Fluxi.Contollers
         }
         [HttpPost]
         //[Authorize("admin")]
-        public IActionResult Post([FromBody] VideoDTO videoDTO)
+        public IActionResult Post([FromBody] VideoDTO videoDTO, [FromForm] IFormFile urlVideo, [FromForm] IFormFile image, [FromForm] IFormFile imageBack)
         {
             Video video = new Video()
             {
                 Name = videoDTO.Name,
                 CategorieId = videoDTO.CategorieId,
-
+                UrlImage = _upload.UploadImg(image),
+                UrlImageBack = _upload.UploadImg(imageBack),
+                UrlVideo = _upload.UploadVideo(urlVideo),
             };
             _videoRepository.Add(video);
             return Ok(video);
         }
 
-        [HttpPut("{id}/image")]
-        //[Authorize("admin")]
-        public IActionResult PutImage(int id,[FromForm]IFormFile urlVideo, [FromForm] IFormFile image, [FromForm] IFormFile imageBack)
-        {
-            Video video = _videoRepository.Find(a => a.Id == id);
-            if (video != null)
-            {
-                video.Images = new Image()
-                {
-                    UrlVideo = _upload.UploadVideo(urlVideo),
-                    UrlImage = _upload.UploadImg(image),
-                    UrlImageBack = _upload.UploadImg(imageBack),
-                };
-                _videoRepository.Update();
-                return Ok();
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
+        //[HttpPut("{id}/image")]
+        ////[Authorize("admin")]
+        //public IActionResult PutImage(int id,[FromForm]IFormFile urlVideo, [FromForm] IFormFile image, [FromForm] IFormFile imageBack)
+        //{
+        //    Video video = _videoRepository.Find(a => a.Id == id);
+        //    if (video != null)
+        //    {
+        //        video.Images = new Image()
+        //        {
+        //            UrlVideo = _upload.UploadVideo(urlVideo),
+        //            UrlImage = _upload.UploadImg(image),
+        //            UrlImageBack = _upload.UploadImg(imageBack),
+        //        };
+        //        _videoRepository.Update();
+        //        return Ok();
+        //    }
+        //    else
+        //    {
+        //        return NotFound();
+        //    }
+        //}
     }
     public record VideoDTO(string Name, int CategorieId);
 }

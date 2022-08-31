@@ -36,6 +36,8 @@
                 <TextBox Text="{Binding Name}"></TextBox>
                 <TextBox Text="{Binding Id}"></TextBox>
                 <Button Command="{Binding OpenFileCommand}" Content="Image"></Button>
+                <Button Command="{Binding OpenFileBackCommand}" Content="Image"></Button>
+                <Button Command="{Binding OpenFileVideoCommand}" Content="Image"></Button>
                 <Button Command="{Binding AddCommand}" Content="Valider"></Button>
             </StackPanel>
         </GroupBox>

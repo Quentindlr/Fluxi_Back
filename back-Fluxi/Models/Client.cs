@@ -15,7 +15,7 @@ namespace back_Fluxi.Models
         private string password;
 
         private string role;
-
+        
 
 
         public Client()
@@ -31,6 +31,7 @@ namespace back_Fluxi.Models
         public string Username { get => username; set => username = value; }
         [Column("password")]
         public string Password { get => password; set => password = value; }
+        
 
         [Column("role")]
         public string Role { get => role; set => role = value; }

@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,8 +27,13 @@ namespace FluxiAdmin.ViewModel
         private DataContextService dataContext;
         private Video selectVideo;
         private string image;
+        private string imageBack;
+        private string urlVideo;
         private HttpClient httpClient;
         private int idFilm;
+        private string nameImage;
+        private string nameImageBack;
+        private string nameVideo;
 
 
         public ObservableCollection<Video> Films { get; set; }
@@ -38,6 +44,8 @@ namespace FluxiAdmin.ViewModel
 
         public ICommand AddCommand { get; set; }
         public ICommand OpenFileCommand { get; set; }
+        public ICommand OpenFileBackCommand { get; set; }
+        public ICommand OpenFileVideoCommand { get; set; }
         public ICommand DeletteCommand { get; set; }
 
 
@@ -51,27 +59,44 @@ namespace FluxiAdmin.ViewModel
 
             AddCommand = new RelayCommand(Add);
             DeletteCommand = new RelayCommand(Delette);
+            OpenFileBackCommand = new RelayCommand(OpenFileBack);
+            OpenFileVideoCommand = new RelayCommand(OpenFileVideo);
             OpenFileCommand = new RelayCommand(OpenFile);
 
             Films = new ObservableCollection<Video>(_filmRepository.FindAll(a => true));
         }
 
-        public void Add()
+        public async void Add()
         {
+            using(var multipartFormContent = new MultipartFormDataContent())
+            {
+                multipartFormContent.Add(new StringContent(Name), name: "Name");
+                //multipartFormContent.Add(new HttpContent(Id), name: "CategorieId");
+
+                var fileStreamContent = new StreamContent(File.OpenRead(image));
+                fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image");
+                multipartFormContent.Add(fileStreamContent, name:"file",fileName:nameImage);
+
+                var fileStreamContentBack = new StreamContent(File.OpenRead(imageBack));
+                fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image");
+                multipartFormContent.Add(fileStreamContent, name: "file", fileName: nameImageBack);
+
+
+                var fileStreamContentVideo = new StreamContent(File.OpenRead(urlVideo));
+                fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("video");
+                multipartFormContent.Add(fileStreamContent, name: "file", fileName: nameVideo);
+
+                await httpClient.PostAsync("http://localhost:7008/api/film",multipartFormContent);
+            }
+
             Video video = new Video()
             {
-
                 Name = Name,
-                Categorie = _categorieRepository.Find(c => c.Id == Id),
-                Images = new Image()
-                {
-                    UrlImage = upload().ToString(),
-                    UrlImageBack = upload().ToString(),
-                    UrlVideo = upload().ToString(),
-                }
+                CategorieId = 1,
+                UrlImage = nameImage,
+                UrlImageBack = nameImageBack,
+                UrlVideo = nameVideo
             };
-
-            _filmRepository.Add(video);
             Films.Add(video);
         }
 
@@ -99,9 +124,50 @@ namespace FluxiAdmin.ViewModel
             {
 
                 image = dialog.FileName;
+                nameImage = dialog.SafeFileName;
 
             }
         }
+
+        public void OpenFileBack()
+        {
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.FileName = "Document";
+            dialog.DefaultExt = ".jpg";
+            dialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+
+
+            bool? result = dialog.ShowDialog();
+
+
+            if (result == true)
+            {
+
+                imageBack = dialog.FileName;
+                nameImageBack = dialog.SafeFileName;
+            }
+        }
+
+        public void OpenFileVideo()
+        {
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.FileName = "Document";
+            dialog.DefaultExt = ".mp4";
+            dialog.Filter = "All Media Files|*.wav;*.aac;*.wma;*.wmv;*.avi;*.mpg;*.mpeg;*.mv1;*.mp4;*.MP4;";
+
+
+            bool? result = dialog.ShowDialog();
+
+
+            if (result == true)
+            {
+
+                urlVideo = dialog.FileName;
+                nameVideo = dialog.SafeFileName;
+
+            }
+        }
+
 
         public async Task<string> upload()
         {
