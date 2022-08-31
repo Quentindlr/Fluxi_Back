@@ -15,6 +15,7 @@ builder.Services.AddScoped<BaseRepository<Categorie>, CategorieRepository>();
 builder.Services.AddScoped<BaseRepository<Client>, ClientRepository>();
 //builder.Services.AddScoped<BaseRepository<Utilisateur>, UtilisateurRepository>();
 builder.Services.AddScoped<BaseRepository<Video>, VideoRepository>();
+builder.Services.AddScoped<BaseRepository<Faq>, FaqRepository>();
 builder.Services.AddDbContext<DataContextService>();
 
 builder.Services.AddTransient<IUpload, UploadService>();

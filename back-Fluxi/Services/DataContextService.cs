@@ -10,7 +10,10 @@ namespace back_Fluxi.Services
         public DbSet<Video> Videos { get; set; }
         public DbSet<Categorie> Categories { get; set; }
         public DbSet<Client> Clients { get; set; }
-        public List<Video> Include { get; internal set; }
+        public DbSet<Faq> Faqs { get; set; }
+        //public List<Video> Include { get; internal set; }
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
