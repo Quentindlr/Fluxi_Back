@@ -20,12 +20,13 @@
             <ListView x:Name="CategorieListView" SelectedItem="{Binding SelectVideo}" ItemsSource="{Binding Films}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="66" Header="Id"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="66" Header="Titre" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Categorie.Name}" Width="66" Header="Categorie" />
-                        <GridViewColumn DisplayMemberBinding="{Binding UrlImage}" Width="66" Header="Url Image" />
-                        <GridViewColumn DisplayMemberBinding="{Binding UrlImageBack}" Width="66" Header="Url ImageBack" />
-                        <GridViewColumn DisplayMemberBinding="{Binding UrlVideo}" Width="66" Header="Url Video" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="20" Header="Id"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="50" Header="Titre" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Categorie.Name}" Width="60" Header="Categorie" />
+                        <GridViewColumn DisplayMemberBinding="{Binding UrlImage}" Width="60" Header="Url Image" />
+                        <GridViewColumn DisplayMemberBinding="{Binding UrlImageBack}" Width="60" Header="Url ImageBack" />
+                        <GridViewColumn DisplayMemberBinding="{Binding UrlVideo}" Width="60" Header="Url Video" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Synopsis}" Width="60" Header="Synopsis" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -33,8 +34,12 @@
 
         <GroupBox Grid.Row="0" Grid.Column="1">
             <StackPanel VerticalAlignment="Center">
+                <Label Content="Nom"></Label>
                 <TextBox Text="{Binding Name}"></TextBox>
+                <Label Content="Categorie id"></Label>
                 <TextBox Text="{Binding Id}"></TextBox>
+                <Label Content="Synopsis"></Label>
+                <TextBox Text="{Binding Synopsis}"></TextBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Command="{Binding OpenFileCommand}" Content="Image" Margin="0,0,25,0"></Button>
                     <Button Command="{Binding OpenFileBackCommand}" Content="Image Back" Margin="0,0,25,0"></Button>

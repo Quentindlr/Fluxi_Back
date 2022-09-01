@@ -14,6 +14,7 @@ namespace back_Fluxi.Models
         private string urlImage;
         private string urlImageBack;
         private string urlVideo;
+        private string synopsis;
 
         public Video()
         {
@@ -38,6 +39,9 @@ namespace back_Fluxi.Models
         public string UrlImage { get => urlImage; set => urlImage = value; }
         [Column("url_image_back")]
         public string UrlImageBack { get => urlImageBack; set => urlImageBack = value; }
+
+        [Column("synopsis")]
+        public string Synopsis { get => synopsis; set => synopsis = value; }
 
         //public Image Images { get; set; }
 

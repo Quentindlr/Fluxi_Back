@@ -41,6 +41,7 @@ namespace FluxiAdmin.ViewModel
         public Video SelectVideo { get => selectVideo;set => selectVideo = value; }
         public string Name { get; set; }
         public string Id { get; set; }
+        public string Synopsis { get; set; }
 
         public ICommand AddCommand { get; set; }
         public ICommand OpenFileCommand { get; set; }
@@ -72,6 +73,7 @@ namespace FluxiAdmin.ViewModel
             {
                 multipartFormContent.Add(new StringContent(Name), name: "Name");
                 multipartFormContent.Add(new StringContent(Id), name: "CategorieId");
+                multipartFormContent.Add(new StringContent(Synopsis), name: "Synopsis");
 
                 var fileStreamContent = new StreamContent(File.OpenRead(image));
                 fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
@@ -95,6 +97,7 @@ namespace FluxiAdmin.ViewModel
             {
                 Name = Name,
                 CategorieId = Int32.Parse(Id),
+                Synopsis = Synopsis,
                 UrlImage = "images/" + nameImage,
                 UrlImageBack ="images/" + nameImageBack,
                 UrlVideo = "videos/" + nameVideo

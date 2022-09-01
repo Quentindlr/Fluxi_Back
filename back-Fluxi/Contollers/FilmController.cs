@@ -28,7 +28,7 @@ namespace back_Fluxi.Contollers
         }
         [HttpPost]
         //[Authorize("admin")]
-        public IActionResult Post([FromForm]string Name, [FromForm] string CategorieId, [FromForm] IFormFile urlVideo, [FromForm] IFormFile image, [FromForm] IFormFile imageBack)
+        public IActionResult Post([FromForm] string Name, [FromForm] string CategorieId, [FromForm] string Synopsis, [FromForm] IFormFile urlVideo, [FromForm] IFormFile image, [FromForm] IFormFile imageBack)
         {
             int id = Int32.Parse(CategorieId);
 
@@ -36,6 +36,7 @@ namespace back_Fluxi.Contollers
             {
                 Name = Name,
                 CategorieId = id,
+                Synopsis= Synopsis,
                 UrlImage = _upload.UploadImg(image),
                 UrlImageBack = _upload.UploadImg(imageBack),
                 UrlVideo = _upload.UploadVideo(urlVideo),

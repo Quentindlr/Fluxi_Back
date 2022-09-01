@@ -109,6 +109,11 @@ namespace back_Fluxi.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("name");
 
+                    b.Property<string>("Synopsis")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("synopsis");
+
                     b.Property<string>("UrlImage")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
