@@ -28,12 +28,14 @@ namespace back_Fluxi.Contollers
         }
         [HttpPost]
         //[Authorize("admin")]
-        public IActionResult Post([FromBody] VideoDTO videoDTO, [FromForm] IFormFile urlVideo, [FromForm] IFormFile image, [FromForm] IFormFile imageBack)
+        public IActionResult Post([FromForm]string Name, [FromForm] string CategorieId, [FromForm] IFormFile urlVideo, [FromForm] IFormFile image, [FromForm] IFormFile imageBack)
         {
+            int id = Int32.Parse(CategorieId);
+
             Video video = new Video()
             {
-                Name = videoDTO.Name,
-                CategorieId = videoDTO.CategorieId,
+                Name = Name,
+                CategorieId = id,
                 UrlImage = _upload.UploadImg(image),
                 UrlImageBack = _upload.UploadImg(imageBack),
                 UrlVideo = _upload.UploadVideo(urlVideo),
@@ -64,5 +66,5 @@ namespace back_Fluxi.Contollers
         //    }
         //}
     }
-    public record VideoDTO(string Name, int CategorieId);
+    public record VideoDTO(string Name, int CategorieId, IFormFile urlVideo, IFormFile image, IFormFile imageBack);
 }

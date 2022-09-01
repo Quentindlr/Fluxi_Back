@@ -40,7 +40,7 @@ namespace FluxiAdmin.ViewModel
         public Video Video { get; set; }
         public Video SelectVideo { get => selectVideo;set => selectVideo = value; }
         public string Name { get; set; }
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public ICommand AddCommand { get; set; }
         public ICommand OpenFileCommand { get; set; }
@@ -71,31 +71,33 @@ namespace FluxiAdmin.ViewModel
             using(var multipartFormContent = new MultipartFormDataContent())
             {
                 multipartFormContent.Add(new StringContent(Name), name: "Name");
-                //multipartFormContent.Add(new HttpContent(Id), name: "CategorieId");
+                multipartFormContent.Add(new StringContent(Id), name: "CategorieId");
 
                 var fileStreamContent = new StreamContent(File.OpenRead(image));
-                fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image");
-                multipartFormContent.Add(fileStreamContent, name:"file",fileName:nameImage);
+                fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+                multipartFormContent.Add(fileStreamContent, name:"image",fileName:nameImage);
 
                 var fileStreamContentBack = new StreamContent(File.OpenRead(imageBack));
-                fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image");
-                multipartFormContent.Add(fileStreamContent, name: "file", fileName: nameImageBack);
+                fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image/png");
+                multipartFormContent.Add(fileStreamContentBack, name: "imageBack", fileName: nameImageBack);
 
 
                 var fileStreamContentVideo = new StreamContent(File.OpenRead(urlVideo));
-                fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("video");
-                multipartFormContent.Add(fileStreamContent, name: "file", fileName: nameVideo);
+                fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("video/mp4");
+                multipartFormContent.Add(fileStreamContentVideo, name: "urlVideo", fileName: nameVideo);
 
-                await httpClient.PostAsync("http://localhost:7008/api/film",multipartFormContent);
+                var response = await httpClient.PostAsync("http://localhost:7008/api/film",multipartFormContent);
+                response.EnsureSuccessStatusCode();
+                string test = await response.Content.ReadAsStringAsync();
             }
 
             Video video = new Video()
             {
                 Name = Name,
-                CategorieId = 1,
-                UrlImage = nameImage,
-                UrlImageBack = nameImageBack,
-                UrlVideo = nameVideo
+                CategorieId = Int32.Parse(Id),
+                UrlImage = "images/" + nameImage,
+                UrlImageBack ="images/" + nameImageBack,
+                UrlVideo = "videos/" + nameVideo
             };
             Films.Add(video);
         }
@@ -169,21 +171,7 @@ namespace FluxiAdmin.ViewModel
         }
 
 
-        public async Task<string> upload()
-        {
-            var multipartFormContent = new MultipartFormDataContent();
 
-            var fileStreamContent = new StreamContent(File.OpenRead(image));
-
-            multipartFormContent.Add(fileStreamContent, name: "image", fileName: "house.png");
-
-            var response = await httpClient.PutAsync("http://localhost:7008/api/film/6/image", multipartFormContent);
-
-            response.EnsureSuccessStatusCode();
-            return image;
-
-
-        }
 
 
 

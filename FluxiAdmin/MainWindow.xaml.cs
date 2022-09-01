@@ -1,6 +1,7 @@
 ﻿using back_Fluxi.Models;
 using back_Fluxi.Repositories;
 using FluxiAdmin.Pages;
+using FluxiAdmin.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,14 +28,10 @@ namespace FluxiAdmin
         public MainWindow()
         {
             InitializeComponent();
-
+            DataContext = new MainViewModel();
             
         }
 
-        public void Connection(object sender, RoutedEventArgs e)
-        {
-            Home c = new Home();
-            c.Show();
-        }
+       
     }
 }

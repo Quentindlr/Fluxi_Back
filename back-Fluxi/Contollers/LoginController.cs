@@ -16,7 +16,7 @@ namespace back_Fluxi.Contollers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]UserDTO userDTO)
+        public IActionResult Post(UserDTO userDTO)
         {
             string token = _loginService.Login(userDTO);
             if (token != null)

@@ -23,9 +23,9 @@
                         <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="66" Header="Id"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="66" Header="Titre" />
                         <GridViewColumn DisplayMemberBinding="{Binding Categorie.Name}" Width="66" Header="Categorie" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Images.UrlImage}" Width="66" Header="Url Image" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Images.UrlImageBack}" Width="66" Header="Url ImageBack" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Images.UrlVideo}" Width="66" Header="Url Video" />
+                        <GridViewColumn DisplayMemberBinding="{Binding UrlImage}" Width="66" Header="Url Image" />
+                        <GridViewColumn DisplayMemberBinding="{Binding UrlImageBack}" Width="66" Header="Url ImageBack" />
+                        <GridViewColumn DisplayMemberBinding="{Binding UrlVideo}" Width="66" Header="Url Video" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -35,9 +35,11 @@
             <StackPanel VerticalAlignment="Center">
                 <TextBox Text="{Binding Name}"></TextBox>
                 <TextBox Text="{Binding Id}"></TextBox>
-                <Button Command="{Binding OpenFileCommand}" Content="Image"></Button>
-                <Button Command="{Binding OpenFileBackCommand}" Content="Image"></Button>
-                <Button Command="{Binding OpenFileVideoCommand}" Content="Image"></Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Command="{Binding OpenFileCommand}" Content="Image" Margin="0,0,25,0"></Button>
+                    <Button Command="{Binding OpenFileBackCommand}" Content="Image Back" Margin="0,0,25,0"></Button>
+                    <Button Command="{Binding OpenFileVideoCommand}" Content="Video" Margin="0,0,25,0"></Button>
+                </StackPanel>
                 <Button Command="{Binding AddCommand}" Content="Valider"></Button>
             </StackPanel>
         </GroupBox>
